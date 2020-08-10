@@ -1,0 +1,1 @@
+ALTER TABLE user MODIFY profile_name varchar(255);

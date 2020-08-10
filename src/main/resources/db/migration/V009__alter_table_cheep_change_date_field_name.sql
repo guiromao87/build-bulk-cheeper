@@ -1,0 +1,1 @@
+ALTER TABLE cheep CHANGE date creation datetime(6);

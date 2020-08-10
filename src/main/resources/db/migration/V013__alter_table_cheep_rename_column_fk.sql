@@ -1,0 +1,1 @@
+ALTER TABLE cheep CHANGE autor_id profile_id int;
