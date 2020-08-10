@@ -24,7 +24,7 @@ public class BuilBulkController {
 
         List<User> users = new ArrayList<>();
 
-        for (int i = 2 ; i <= 1000; i++) {
+        for (int i = 2 ; i <= 10000; i++) {
             User user = new User();
             user.setId(i);
             user.setPassword("123");
@@ -43,12 +43,6 @@ public class BuilBulkController {
 
             // de 30 em 30...
             if(i % 30 == 0) {
-                userRepository.saveAll(users);
-                users.clear();
-            }
-
-            // Se sobrou alguém depois do ultimo bach...
-            if(users.size() > 0) {
                 userRepository.saveAll(users);
                 users.clear();
             }

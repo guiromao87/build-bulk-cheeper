@@ -43,6 +43,9 @@ public class User implements Persistable {
 
     public Integer getId() { return id; }
 
+    @Override
+    public boolean isNew() { return true; }
+
     public void setId(Integer id) { this.id = id; }
 
     public String getEmail() { return email; }
@@ -97,7 +100,5 @@ public class User implements Persistable {
                 ", email='" + email + '\'' +
                 '}';
     }
-
-    @Override
-    public boolean isNew() { return true; }
 }
+

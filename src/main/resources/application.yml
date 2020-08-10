@@ -10,6 +10,6 @@ spring:
       ddl-auto: validate
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cheeper?reWriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3306/cheeper?cachePrepStmts=true&reWriteBatchedInserts=true
     username: root
     password: cheeper
