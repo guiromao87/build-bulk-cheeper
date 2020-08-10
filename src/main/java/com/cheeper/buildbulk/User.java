@@ -1,5 +1,7 @@
 package com.cheeper.buildbulk;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -8,9 +10,9 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Persistable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Integer id;
     private String email;
     private String password;
@@ -95,4 +97,7 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean isNew() { return true; }
 }

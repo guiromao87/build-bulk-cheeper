@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/build-bulk")
 public class BuilBulkController {
@@ -19,8 +22,11 @@ public class BuilBulkController {
     @GetMapping("/user")
     public String process() {
 
+        List<User> users = new ArrayList<>();
+
         for (int i = 2 ; i <= 1000; i++) {
             User user = new User();
+            user.setId(i);
             user.setPassword("123");
             user.setBio("Gerado pelo build bulk");
             user.setVerifiedEmail(true);
@@ -33,7 +39,19 @@ public class BuilBulkController {
             user.setProfileName(profileName.replace(".", "_").concat(""+i));
             user.setEmail(profileName.replace(".", "").concat("@cheeper.com"));
 
-            this.userRepository.save(user);
+            users.add(user);
+
+            // de 30 em 30...
+            if(i % 30 == 0) {
+                userRepository.saveAll(users);
+                users.clear();
+            }
+
+            // Se sobrou alguém depois do ultimo bach...
+            if(users.size() > 0) {
+                userRepository.saveAll(users);
+                users.clear();
+            }
         }
 
         return "Usuários cadastrados";
