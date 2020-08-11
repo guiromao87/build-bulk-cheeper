@@ -1,12 +1,14 @@
 package com.cheeper.buildbulk;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Cheep {
+public class Cheep implements Persistable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     
     @Column(columnDefinition = "text")
@@ -19,6 +21,9 @@ public class Cheep {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public boolean isNew() { return true; }
 
     public void setId(Long id) {
         this.id = id;

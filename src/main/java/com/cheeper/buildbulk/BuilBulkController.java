@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/build-bulk")
@@ -54,16 +55,28 @@ public class BuilBulkController {
 
     @GetMapping("/cheeps")
     public String cheeps() {
-        userRepository.findAll().stream().forEach(user -> {
-            int numberOfCheepsPerUser = getRandomIntegerBetweenRange(1, 10);
+        List<Cheep> cheeps = new ArrayList<>();
 
-            for (int i = 1 ; i < numberOfCheepsPerUser; i++) {
+        AtomicLong cheepId = new AtomicLong(2);
+        userRepository.findAll().stream().forEach(user -> {
+            int numberOfCheepsPerUser = getRandomIntegerBetweenRange(2, 5);
+
+            for (int i = 2 ; i <= numberOfCheepsPerUser; i++) {
                 Cheep cheep = new Cheep();
+                cheep.setId(cheepId.getAndIncrement());
                 cheep.setMessage(new Faker().lorem().sentence(10));
                 cheep.setProfile(user);
-                this.cheepRepository.save(cheep);
+
+                cheeps.add(cheep);
+
+            }
+            if (cheepId.intValue() % 30 == 0) {
+                cheepRepository.saveAll(cheeps);
+                cheeps.clear();
             }
         });
+
+        if(cheeps.size() > 0) cheepRepository.saveAll(cheeps);
 
         return "Cheeps cadastrados";
     }

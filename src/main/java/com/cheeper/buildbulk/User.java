@@ -23,7 +23,7 @@ public class User implements Persistable {
     private String profileName;
     private boolean verifiedEmail;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="relationship",
             joinColumns=@JoinColumn(name="follower_id"),
             inverseJoinColumns=@JoinColumn(name="followed_id"))
