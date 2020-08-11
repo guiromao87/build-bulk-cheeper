@@ -1,0 +1,1 @@
+ALTER TABLE user ADD UNIQUE (profile_name);

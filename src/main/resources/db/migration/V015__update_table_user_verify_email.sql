@@ -1,0 +1,1 @@
+update user set verified_email = true where id = 1;

@@ -1,0 +1,1 @@
+ALTER TABLE cheep MODIFY message text;

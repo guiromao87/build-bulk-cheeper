@@ -1,0 +1,1 @@
+UPDATE user set name = 'Guilherme', bio = 'Programador' where id = 1;
