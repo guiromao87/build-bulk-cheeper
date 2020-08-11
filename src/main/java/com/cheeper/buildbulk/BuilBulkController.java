@@ -47,6 +47,7 @@ public class BuilBulkController {
                 users.clear();
             }
         }
+        if(users.size() > 0) userRepository.saveAll(users);
 
         return "Usuários cadastrados";
     }
