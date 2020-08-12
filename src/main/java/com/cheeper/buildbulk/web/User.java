@@ -1,4 +1,4 @@
-package com.cheeper.buildbulk;
+package com.cheeper.buildbulk.web;
 
 import org.springframework.data.domain.Persistable;
 
@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 public class User implements Persistable {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String password;

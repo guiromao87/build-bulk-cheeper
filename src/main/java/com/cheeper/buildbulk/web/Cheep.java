@@ -1,4 +1,4 @@
-package com.cheeper.buildbulk;
+package com.cheeper.buildbulk.web;
 
 import org.springframework.data.domain.Persistable;
 

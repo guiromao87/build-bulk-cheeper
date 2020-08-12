@@ -1,7 +1,5 @@
-package com.cheeper.buildbulk;
+package com.cheeper.buildbulk.web;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface CheepRepository extends JpaRepository<Cheep, Long> { }

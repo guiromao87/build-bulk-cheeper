@@ -3,13 +3,13 @@ server:
 spring:
   jpa:
     properties:
-      hibernate.jdbc.batch_size: 30
-      hibernate.generate_statistics: true
-    show-sql: true
+#      hibernate.jdbc.batch_size: 30
+      hibernate.generate_statistics: false
+    show-sql: false
     hibernate:
       ddl-auto: validate
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cheeper?cachePrepStmts=true&reWriteBatchedInserts=true
+    url: jdbc:mysql://localhost:3306/cheeper #?cachePrepStmts=true&reWriteBatchedInserts=true
     username: root
     password: cheeper
