@@ -1,4 +1,4 @@
-package com.cheeper.buildbulk;
+package com.cheeper.buildbulk.web;
 
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
